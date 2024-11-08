@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/EricOnah/Newsletter-signup/issues"
   },
-  "homepage": "https://github.com/EricOnah/Newsletter-signup#readme"
+  "homepage": "https://github.com/EricOnah/Newsletter-signup#readme",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.1",
+    "request": "^2.88.2"
+  }
 }
