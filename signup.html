@@ -21,21 +21,23 @@
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
 
     <main class="form-signin w-100 m-auto">
-        <form>
+        <form action="/" method="post">
             <img class=" mx-auto d-block mb-4" src="image/Newsletter.png" alt="" width="72" height="57">
             <h1 class="h3 mb-3 fw-normal text-capitalize">Sign up for our Newsletter</h1>
 
             <div class="form-floating">
-                <input type="text" class="form-control" id="firstName" placeholder="First Name" required autofocus>
+                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name"
+                    required autofocus>
                 <label for="firstName">First Name</label>
             </div>
             <div class="form-floating mt-1">
-                <input type="text" class="form-control" id="LastName" placeholder="Last Name" required>
+                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
                 <label for="lastName">Last Name</label>
             </div>
             <div class="form-floating mt-1">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-                <label for="floatingInput">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"
+                    required>
+                <label for="email">Email address</label>
             </div>
 
             <button class="btn btn-primary w-100 py-2 mt-1" type="submit">Sign up</button>

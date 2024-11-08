@@ -8,3 +8,14 @@ To be able to serve other static files, I import path from path and set the stat
 without the public folder bc I do not have a public folder in the app.
 
 <app.use(express.static(path.join(__dirname)));>
+
+You can also do this without using the path module: Simply use express to render static files in the root folder.
+app.use(express.static(__dirname));
+It's shorter and easier to understand. Also, you can freely send the html file in the root route without needing to use res.sendFile(path.join(__dirname, "/signup.html"));
+
+NOTE: Using name attribute to be able to get data from the form using post.
+
+It is faster to use destructuring assignment to get the values of the form fields 
+
+    const { firstName, lastName, email } = req.body;
+    console.log(firstName, lastName, email);
