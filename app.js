@@ -4,6 +4,7 @@ import fileURLToPath from "path";
 import url from "url";
 import { dirname } from "path";
 import https from "https";
+import dotenv from "dotenv";
 
 // create express app and set port
 const app = express();
@@ -12,6 +13,11 @@ const port = 3000;
 // setup path for html files
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+// dotenv to load environment variables from a.env file
+dotenv.config();
+const API_KEY = process.env.MAILCHIMP_API_KEY;
+const LIST_ID = process.env.MAILCHIMP_LIST_ID;
 
 // middleware for handling json and urlencoded requests and serving static files from the current directory
 app.use(express.json());
@@ -39,10 +45,10 @@ app.post("/", (req, res) => {
 
   // convert the data to JSON format and set the required headers for the POST request to the Mailchimp API
   const jsonData = JSON.stringify(data);
-  const url = "https://us14.api.mailchimp.com/3.0/lists/540b28df3b/members";
+  const url = `https://us14.api.mailchimp.com/3.0/lists/${LIST_ID}/members`;
   const options = {
     method: "POST",
-    auth: "ericOnah:b463fe285a5f83a380a47e8c28aa1714-us14",
+    auth: `ericOnah:${API_KEY}`,
   };
 
   // set up the request and handle the response from the Mailchimp API
@@ -62,7 +68,7 @@ app.post("/", (req, res) => {
   // end the request
   request.end();
 });
-
+// Route for redirects to the success and failure pages
 app.post("/failure", (req, res) => {
   res.redirect("/");
 });
@@ -71,6 +77,7 @@ app.post("/success", (req, res) => {
   res.redirect("/");
 });
 
+// setup the server to listen on the specified port and log a message when it's ready for connections
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
