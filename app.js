@@ -47,6 +47,11 @@ app.post("/", (req, res) => {
 
   // set up the request and handle the response from the Mailchimp API
   const request = https.request(url, options, (response) => {
+    if (response.statusCode === 200) {
+      res.sendFile(__dirname + "/success.html");
+    } else {
+      res.sendFile(__dirname + "/failure.html");
+    }
     response.on("data", (data) => {
       const mailData = JSON.parse(data);
       console.log(mailData);
@@ -56,6 +61,14 @@ app.post("/", (req, res) => {
   request.write(jsonData);
   // end the request
   request.end();
+});
+
+app.post("/failure", (req, res) => {
+  res.redirect("/");
+});
+
+app.post("/success", (req, res) => {
+  res.redirect("/");
 });
 
 app.listen(port, () => {
