@@ -19,3 +19,5 @@ It is faster to use destructuring assignment to get the values of the form field
 
     const { firstName, lastName, email } = req.body;
     console.log(firstName, lastName, email);
+
+To use mailchimp API, we need to set our obj to match mailchimp key-value pairs.
