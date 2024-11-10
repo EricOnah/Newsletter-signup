@@ -2,7 +2,9 @@ Description of process:
 Used express here so basic express routing defined.
 Added "type: module" to the package.json to use ES6 module syntax.
 Because of ES6 module, I need to import  from url and dirname from path to be able to assign the __dirname to the
-root folder. This way __dirname is defined and can be used to find the file path when using res.sendFile()
+root folder. 
+Also we need to import fileURLToPath from url to convert the file URL to a file path.
+This way __dirname is defined and can be used to find the file path when using res.sendFile()
 
 To be able to serve other static files, I import path from path and set the static folder path to be the root folder
 without the public folder bc I do not have a public folder in the app.
